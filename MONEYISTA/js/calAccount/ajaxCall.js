@@ -39,15 +39,18 @@ function ajaxAPI() {
 
   $.ajax({
     method: "POST",
-    url: "https://iapi.bot.or.th/Stat/ProductDisclosure/Deposit",
+    // url: "https://iapi.bot.or.th/Stat/ProductDisclosure/Deposit",
     // url: " https://apigw1.bot.or.th/bot/public/deposit-product/",
-    beforeSend: function(xhr) {
-      xhr.setRequestHeader(
-        "api-key",
-        "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm"
-        // "X-IBM-Client-Id",
-        // "b096ba29-5d7f-4842-b622-210d4787e3bd"
-      );
+    url: "https://localhost:8443/apiman-gateway/bot-api/deposit-product/1.1",
+    headers: {
+      "Access-Control-Allow-Credentials": true,
+      "contentType": "application/json; charset=utf-8",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,PATCH",
+      "Access-Control-Allow-Headers": "Origin,X-Requested-With,Content-Type,Accept,Authorization,X-API-Key",
+      "api-key": "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm",
+      // "X-IBM-Client-Id": "b096ba29-5d7f-4842-b622-210d4787e3bd",
+      Authorization: 'X-API-Key b55e1b05-ae1a-4165-b866-5a543dc93131'
     },
     dataType: "json",
     contentType: "application/json; charset=utf-8",

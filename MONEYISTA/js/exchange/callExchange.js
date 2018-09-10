@@ -6,13 +6,17 @@ function ajaxAPIExchange() {
     var currency = $("#currency").val();
 
     var url = [
-        "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/DAILY_AVG_EXG_RATE_V1/",
-        "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/MONTHLY_AVG_EXG_RATE_V1/",
-        "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/ANNUAL_AVG_EXG_RATE_V1/"
+        // "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/DAILY_AVG_EXG_RATE_V1/",
+        // "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/MONTHLY_AVG_EXG_RATE_V1/",
+        // "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/ANNUAL_AVG_EXG_RATE_V1/"
 
         // "https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/DAILY_AVG_EXG_RATE_V1/",
         // "https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/MONTHLY_AVG_EXG_RATE_V1/",
         // "https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/ANNUAL_AVG_EXG_RATE_V1/"
+
+        "https://localhost:8443/apiman-gateway/bot-api/DAILY_AVG_EXG_RATE/1.0",
+        "https://localhost:8443/apiman-gateway/bot-api/MONTHLY_AVG_EXG_RATE/1.0",
+        "https://localhost:8443/apiman-gateway/bot-api/ANNUAL_AVG_EXG_RATE/1.0"
     ]
 
       $.ajax({

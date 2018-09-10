@@ -1,3 +1,19 @@
+function checkDate(){
+  //วันเริ่มฝาก ต้องน้อยกว่าหรือเท่ากับ วันครบกำหนดฝาก
+  var start_d = $("#start_dayA").val();
+  var start_m = $("#start_monthA").val();
+  var start_y = $("#start_yearA").val();
+
+  var end_d = $("#end_dayA").val();
+  var end_m = $("#end_monthA").val();
+  var end_y = $("#end_yearA").val();
+
+  var date1 = new Date(start_y, start_m, start_d);
+  var date2 = new Date(end_y, end_m, end_d);
+  
+  if(date1 < date2 || date1 <= date2) return true;
+  else if(date1 > date2 || date1 >= date2 ) return false;
+}
 function calendar() {
   var amount_day = [-1, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -52,15 +68,22 @@ function checkLeapYear(y) {
 }
 
 function calInterestRate_saving() {
-  var numOfDay = calendar();
-  var money = $("input[name='amountA']").val();
-  money = money.replace(',', '');
-  var interestRate = $("input[name='interestRateA']").val();
-  var interest = (money * (interestRate / 100) * numOfDay) / 365;
+  if(checkDate()){
+    alert("true");
+    var numOfDay = calendar();
+    var money = $("input[name='amountA']").val();
+    money = money.replace(',', '');
+    var interestRate = $("input[name='interestRateA']").val();
+    var interest = (money * (interestRate / 100) * numOfDay) / 365;
+
+    $(".div-block-7").empty().append(interest.toFixed(2) + " บาท");
+    $(".div-block-8").empty().append("0 บาท");
+    $(".div-block-9").empty().append(interest.toFixed(2) + " บาท");
+  }
+  else{
+    alert("วันเริ่มฝาก ต้องน้อยกว่าหรือเท่ากับ วันครบกำหนดฝาก!");
+  }
   
-  $(".div-block-7").empty().append(interest.toFixed(2)+" บาท");
-  $(".div-block-8").empty().append("0 บาท");
-  $(".div-block-9").empty().append(interest.toFixed(2)+" บาท");
 }
 
 function calFixedDepositInterest() {
