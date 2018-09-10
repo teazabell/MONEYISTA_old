@@ -85,14 +85,14 @@ function ajaxAPIShow() {
 
   $.ajax({
     method: "POST",
-    // url: "https://iapi.bot.or.th/Stat/ProductDisclosure/Deposit",
-    url: " https://apigw1.bot.or.th/bot/public/deposit-product/",
+    url: "https://iapi.bot.or.th/Stat/ProductDisclosure/Deposit",
+    // url: " https://apigw1.bot.or.th/bot/public/deposit-product/",
     beforeSend: function(xhr) {
       xhr.setRequestHeader(
-        // "api-key",
-        // "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm"
-        "X-IBM-Client-Id",
-        "b096ba29-5d7f-4842-b622-210d4787e3bd"
+        "api-key",
+        "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm"
+        // "X-IBM-Client-Id",
+        // "b096ba29-5d7f-4842-b622-210d4787e3bd"
       );
     },
     dataType: "json",
@@ -101,10 +101,10 @@ function ajaxAPIShow() {
     data: JSON.stringify(criteria),
     success: function(response) {
       var SearchFor = getCookie("ProductName"+index+"-"+pageNumber);
-      for (var i = 0; i < response.result.data.length; i++)
+      for (var i = 0; i < response.length; i++)
       {
-        if (response.result.data[i].ProductName == SearchFor){
-          createData(response.result.data[i] , img[FICode] )
+        if (response[i].ProductName == SearchFor){
+          createData(response[i] , img[FICode] )
         }
       }
       return false ;

@@ -6,13 +6,13 @@ function ajaxAPIExchange() {
     var currency = $("#currency").val();
 
     var url = [
-        // "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/DAILY_AVG_EXG_RATE_V1/",
-        // "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/MONTHLY_AVG_EXG_RATE_V1/",
-        // "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/ANNUAL_AVG_EXG_RATE_V1/"
+        "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/DAILY_AVG_EXG_RATE_V1/",
+        "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/MONTHLY_AVG_EXG_RATE_V1/",
+        "https://iapi.bot.or.th/Stat/Stat-ExchangeRate/ANNUAL_AVG_EXG_RATE_V1/"
 
-        "https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/DAILY_AVG_EXG_RATE_V1/",
-        "https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/MONTHLY_AVG_EXG_RATE_V1/",
-        "https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/ANNUAL_AVG_EXG_RATE_V1/"
+        // "https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/DAILY_AVG_EXG_RATE_V1/",
+        // "https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/MONTHLY_AVG_EXG_RATE_V1/",
+        // "https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/ANNUAL_AVG_EXG_RATE_V1/"
     ]
 
       $.ajax({
@@ -20,10 +20,10 @@ function ajaxAPIExchange() {
         url: getValue(type , start_period , end_period , currency , url),
         beforeSend: function(xhr) {
           xhr.setRequestHeader(
-            // "api-key",
-            // "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm"
-            "X-IBM-Client-Id",
-            "b096ba29-5d7f-4842-b622-210d4787e3bd"
+            "api-key",
+            "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm"
+            // "X-IBM-Client-Id",
+            // "b096ba29-5d7f-4842-b622-210d4787e3bd"
           );
         },
         dataType: "json",
@@ -31,7 +31,7 @@ function ajaxAPIExchange() {
         Accept: "application/json",
         // data: ,
         success: function(response) {
-            
+            console.log(response);
             var str = "<table id='exchangeTable' class='exchangeTable'>"+
             "<thead>"+
             "<tr  class='exchangeTable'>"+

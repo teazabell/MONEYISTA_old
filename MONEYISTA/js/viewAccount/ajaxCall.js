@@ -23,15 +23,14 @@ function ajaxAPI() {
   if (FICodeList != "") {
     $.ajax({
       method: "POST",
-      // url: "https://iapi.bot.or.th/Stat/ProductDisclosure/Deposit",
+      url: "https://iapi.bot.or.th/Stat/ProductDisclosure/Deposit",
       // url: " https://apigw1.bot.or.th/bot/public/deposit-product/",
-      url: "https://localhost:8443/apiman-gateway/bot-api/deposit-product/1.0",
       beforeSend: function(xhr) {
         xhr.setRequestHeader(
-          // "api-key",
-          // "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm"
-          "X-IBM-Client-Id",
-          "b096ba29-5d7f-4842-b622-210d4787e3bd",
+          "api-key",
+          "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm"
+          // "X-IBM-Client-Id",
+          // "b096ba29-5d7f-4842-b622-210d4787e3bd",
         );
       },
       headers: {
@@ -45,6 +44,7 @@ function ajaxAPI() {
       Accept: "application/json",
       data: JSON.stringify(criteria),
       success: function(response) {
+        console.log(response);
         var img = {
           "002": "images/iconbank/กรุงเทพ.png",
           "004": "images/iconbank/กสิกร.png",
@@ -77,12 +77,12 @@ function ajaxAPI() {
         if(FICodeList == "052"){
           $(".text-block-FIName")
           .empty()
-          .append(deleteBr(response.result.data[0].FIName));
+          .append(deleteBr(response["0"].FIName));
         }
         else{
           $(".text-block-FIName")
           .empty()
-          .append("ธนาคาร" + deleteBr(response.result.data[0].FIName));
+          .append("ธนาคาร" + deleteBr(response["0"].FIName));
         }
         
         $(".imgFI")
@@ -93,7 +93,7 @@ function ajaxAPI() {
 
         $(".modal-header-title-detail").empty(); 
         $(".modal-body-detail").empty();
-        pagination("demo1", response.result.data);
+        pagination("demo1", response);
       },
       error: function(jqXHR, textStatus, errorThrown) {
         var msg = "";
