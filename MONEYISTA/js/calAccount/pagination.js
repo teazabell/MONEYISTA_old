@@ -61,7 +61,8 @@ function pagination(namePage , sources) {
             '<img src="'+img[item.FICode]+'" width="100" class="image-16"></a>'+
             '<div class="textinout"><b>ประเภทบัญชีเงินฝาก : </b>'+item.AccountType+
             '<br><b>ชื่อผลิตภัณฑ์ : </b>'+item.ProductName+
-            '<br><b>ดอกเบี้ย : </b>'+interestRate(item.MinimumInterestRate,item.MaximumInterestRate)+' ต่อปี</div>'+
+            '<br><b>ดอกเบี้ย : </b>'+interestRate(item.MinimumInterestRate,item.MaximumInterestRate)+' ต่อปี'+
+            '<br><a href="showalldata.html" class="link-block-10 w-inline-block" target="_blank" onclick=sendData('+index+','+pagination.pageNumber+') >อ่านข้อมูลเพิ่มเติม</a></div>'+
             '</div>';
 
             setCookie("FICode"+index+"-"+pagination.pageNumber, item.FICode);
