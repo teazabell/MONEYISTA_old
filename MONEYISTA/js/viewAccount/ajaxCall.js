@@ -4,7 +4,6 @@ function isEmpty(data, unit) {
   } else return data + " " + unit + " ";
 }
 
-
 function ajaxAPI() {
   var FICodeList = $("#menuFI").val();
 
@@ -23,28 +22,25 @@ function ajaxAPI() {
   if (FICodeList != "") {
     $.ajax({
       method: "POST",
-      url: "https://iapi.bot.or.th/Stat/ProductDisclosure/Deposit",
+      // url: "https://iapi.bot.or.th/Stat/ProductDisclosure/Deposit",
       // url: " https://apigw1.bot.or.th/bot/public/deposit-product/",
-      beforeSend: function(xhr) {
-        xhr.setRequestHeader(
-          "api-key",
-          "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm"
-          // "X-IBM-Client-Id",
-          // "b096ba29-5d7f-4842-b622-210d4787e3bd",
-        );
-      },
+      url: "https://localhost:8443/apiman-gateway/bot-api/deposit-product/1.0",
+      
       headers: {
+        "Access-Control-Allow-Credentials": true,
+        "contentType": "application/json; charset=utf-8",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,PATCH",
         "Access-Control-Allow-Headers": "Origin,X-Requested-With,Content-Type,Accept,Authorization,X-API-Key",
-        Authorization: 'X-API-Key 54828915-6b52-4ebb-8b94-7aa04efcbb54'
+        "api-key" : "U9G1L457H6DCugT7VmBaEacbHV9RX0PySO05cYaGsm",
+        // "X-IBM-Client-Id": "b096ba29-5d7f-4842-b622-210d4787e3bd"
+        Authorization: 'X-API-Key b55e1b05-ae1a-4165-b866-5a543dc93131'
     },
       dataType: "json",
       contentType: "application/json; charset=utf-8",
       Accept: "application/json",
       data: JSON.stringify(criteria),
       success: function(response) {
-        console.log(response);
         var img = {
           "002": "images/iconbank/กรุงเทพ.png",
           "004": "images/iconbank/กสิกร.png",
@@ -74,24 +70,23 @@ function ajaxAPI() {
           "613": "images/iconbank/บค.แคปปิตอล ลิ้งค์.png"
         };
 
-        if(FICodeList == "052"){
+        if (FICodeList == "052") {
           $(".text-block-FIName")
-          .empty()
-          .append(deleteBr(response["0"].FIName));
-        }
-        else{
+            .empty()
+            .append(deleteBr(response["0"].FIName));
+        } else {
           $(".text-block-FIName")
-          .empty()
-          .append("ธนาคาร" + deleteBr(response["0"].FIName));
+            .empty()
+            .append("ธนาคาร" + deleteBr(response["0"].FIName));
         }
-        
+
         $(".imgFI")
           .empty()
           .append('<img src="' + img[FICodeList] + '" width="100">');
 
         $(".divfooter").css("margin-top", "100px");
 
-        $(".modal-header-title-detail").empty(); 
+        $(".modal-header-title-detail").empty();
         $(".modal-body-detail").empty();
         pagination("demo1", response);
       },
@@ -117,13 +112,12 @@ function ajaxAPI() {
   }
 }
 
-function deleteBr(word){
-  var index = word.indexOf("<br/>")
+function deleteBr(word) {
+  var index = word.indexOf("<br/>");
 
-  if(index != -1){
-  var text_head = word.substring(0,index);
-  var text_last = word.substring(index+5);
-  return text_head+""+text_last;
-  }
-  else return word;
+  if (index != -1) {
+    var text_head = word.substring(0, index);
+    var text_last = word.substring(index + 5);
+    return text_head + "" + text_last;
+  } else return word;
 }
