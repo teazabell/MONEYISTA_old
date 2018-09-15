@@ -37,6 +37,11 @@
   <script src="pdfmake-master/build/vfs_fonts.js"></script>
   <script src="js/pdf/pdfmake.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.5/jspdf.plugin.autotable.js"></script>
+  <script src="js/showAllData/pdf.js"></script>
+  <script src="js/showAllData/callPDF.js"></script>
+  <script src="https://raw.githubusercontent.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script>
+
   <style>
     .navbar {
       margin-bottom: 0;
@@ -113,8 +118,8 @@
     <div>
       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="margin-left: 1050px;font-family: Prompt, sans-serif;font-size: 16px;
       font-weight: 300;">เปลี่ยนการแสดงผลข้อมูล</button>
-      <button id="exportButton" class="btn btn-lg btn-danger clearfix" onclick="pdfMake()">
-        <span class="fa fa-file-pdf-o"></span> Export to PDF</button>
+      <!-- <button id="exportButton" class="btn btn-lg btn-danger clearfix" onclick="pdf()">
+        <span class="fa fa-file-pdf-o"></span> Export to PDF</button> -->
     </div>
   </div>
 

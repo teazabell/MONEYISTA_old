@@ -107,8 +107,7 @@ function ajaxAPIShow() {
       for (var i = 0; i < response.length; i++)
       {
         if (response[i].ProductName == SearchFor){
-          createData(response[i] , img[FICode] )
-          
+          pdfTest(response[i]);
         }
       }
       return false ;
